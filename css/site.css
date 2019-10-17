@@ -1,0 +1,20 @@
+body {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    
+    background-image: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    /*
+    Other option (purple)
+    https://uigradients.com/#ElectricViolet
+    background-image: linear-gradient(90deg, #4776e6, #8e54e9);
+
+    other options?
+    https://uigradients.com/#Roseanna
+    https://uigradients.com/#SublimeLight
+    */
+}
+
+h1 {
+    margin-top: 10em;
+}

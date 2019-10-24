@@ -8,30 +8,49 @@
     <meta name="Description" content="Free online todo list tracker.">
     <link rel="stylesheet" href="css/site.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
     <title>Free Online ToDo List</title>
 </head>
 
 <body>
-    <h1>ToDo List</h1>
+    <h1>To-Do List</h1>
 
-    <form>
-        <input type="text" name="title" id="title">
+    <div id="color-picker">
+        <button class="colors" id="blue" onclick="">1</button>
         <br>
-        <input type="text" placeholder="deadline" name="deadline" id="deadline"
-            aria-placeholder="Enter a date when the task is due">
         <br>
-        <input type="checkbox"> Is Complete?
+        <button class="colors" id="purple">2</button>
         <br>
-        <input type="button" value="Add ToDo">
-    </form>
+        <br>
+        <button class="colors" id="pink">3</button>
+        <br>
+        <br>
+    </div>
 
-    <div id="todo">
+    <input type="text" name="title" id="title" placeholder="Add New To-Do">
+    <br>
+    <input type="text" placeholder="Deadline" name="deadline" id="deadline"
+        aria-placeholder="Enter a date when the task is due">
+    <br>
+    <br>
+    <button type="button" id="add-to-do">Add To-Do</button>
+
+    <ul id="list">
+
+    </ul>
+
+    <div id=" todo">
     </div>
 
     <div id="completed">
     </div>
 
     <script src="scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+
+    <script>
+        var picker = new Pikaday({ field: document.getElementById('deadline') });
+    </script>
 </body>
 
 </html>

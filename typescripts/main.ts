@@ -15,7 +15,7 @@ let myItem = new ToDoItem("Finish class");
 
 
 window.onload = function () {
-    let addBtn = <HTMLElement>document.querySelector("form > input[type=button]");
+    let addBtn = <HTMLElement>document.getElementById("add-to-do");
     addBtn.onclick = main;
 }
 
@@ -45,13 +45,13 @@ function markAsComplete() {
  * @param item The item to be displayed
  */
 function displayToDoItem(item: ToDoItem): void {
-    let div = document.createElement("div");
-    div.onclick = markAsComplete;
-    div.innerHTML = '<input type="checkbox">' + item.title;
+    let li = document.createElement("li");
+    li.onclick = markAsComplete;
+    li.innerHTML = item.title;
 
-    console.log(div);
-    let displayDiv = document.getElementById("todo");
-    displayDiv.appendChild(div);
+    console.log(li);
+    let displayLi = document.getElementById("list");
+    displayLi.appendChild(li);
 
 }
 /**

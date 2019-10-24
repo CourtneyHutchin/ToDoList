@@ -9,7 +9,7 @@ var ToDoItem = /** @class */ (function () {
 }());
 var myItem = new ToDoItem("Finish class");
 window.onload = function () {
-    var addBtn = document.querySelector("form > input[type=button]");
+    var addBtn = document.getElementById("add-to-do");
     addBtn.onclick = main;
 };
 function main() {
@@ -32,12 +32,12 @@ function markAsComplete() {
  * @param item The item to be displayed
  */
 function displayToDoItem(item) {
-    var div = document.createElement("div");
-    div.onclick = markAsComplete;
-    div.innerHTML = '<input type="checkbox">' + item.title;
-    console.log(div);
-    var displayDiv = document.getElementById("todo");
-    displayDiv.appendChild(div);
+    var li = document.createElement("li");
+    li.onclick = markAsComplete;
+    li.innerHTML = item.title;
+    console.log(li);
+    var displayLi = document.getElementById("list");
+    displayLi.appendChild(li);
 }
 /**
  * Gets the user input todo item

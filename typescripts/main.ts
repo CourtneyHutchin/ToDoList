@@ -11,7 +11,24 @@ class ToDoItem {
     }
 }
 
-let myItem = new ToDoItem("Finish class");
+
+
+/* Test Code Here... */
+let myItem = new ToDoItem("Learn about cookies=;");
+myItem.isCompleted = false;
+// Get todays date
+myItem.deadline = new Date();
+// get a specific date (December 25 2019)
+// myItem.deadline = new Date(2019, 11, 25);
+
+// stringify converts any object into a JSON string format
+let strData = JSON.stringify(myItem);
+console.log(strData);
+
+// Setting a cookie called 'todoitems' that expires in a week
+Cookies.set("todoitems", strData, { expires: 7 });
+
+/* END TEST CODE */
 
 
 window.onload = function () {
@@ -25,6 +42,8 @@ function main() {
 
     // Display new ToDoItem on page
     displayToDoItem(item);
+
+
 
     // Save ToDoItem
 }

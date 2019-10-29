@@ -31,6 +31,7 @@ div#completed {
 
 ul, li {
     list-style: none;
+    text-align: center;
 }
 
 li {
@@ -39,7 +40,7 @@ li {
     line-height: 40px;
     color: lightgray;
     width: 15%;
-    text-align: center;
+    display: inline-block;
 }
 
 input {
@@ -51,10 +52,14 @@ input:focus {
     outline: none;
 }
 
+
+/*
+    This is the styling for the color changer
+*/
 div#color-picker {
- position: absolute; 
- top: 100px;
- right: 100px;  
+    position: absolute; 
+    top: 100px;
+    right: 100px;  
 }
 
 .colors {

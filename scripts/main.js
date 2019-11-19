@@ -1,5 +1,5 @@
 /**
- * Represents a sinle task on a todo list
+ * Represents a single task on a todo list
  */
 var ToDoItem = /** @class */ (function () {
     function ToDoItem(task) {
@@ -19,6 +19,19 @@ var strData = JSON.stringify(myItem);
 console.log(strData);
 // Setting a cookie called 'todoitems' that expires in a week
 Cookies.set("todoitems", strData, { expires: 7 });
+// Read ToDoItem
+var cookieItem = JSON.parse(Cookies.get("todoitems"));
+console.log("read cookie data..");
+console.log(cookieItem.title + " " + cookieItem.deadline);
+var storageKey = "Task";
+// TODO: Store ToDO item using HTML5 Web Storage
+if (typeof (Storage) !== "undefined") {
+    localStorage.setItem(storageKey, strData);
+    var storageStr = localStorage.getItem(storageKey);
+    var item = JSON.parse(storageStr);
+    console.log("Reading storage data...");
+    console.log(item.title);
+}
 /* END TEST CODE */
 window.onload = function () {
     var addBtn = document.getElementById("add-to-do");
@@ -27,9 +40,14 @@ window.onload = function () {
 function main() {
     // Get ToDoItem from user
     var item = getItem();
-    // Display new ToDoItem on page
     displayToDoItem(item);
-    // Save ToDoItem
+    // Get existing Todos, add new one, re-save list
+    var allItems = readToDoItems();
+    allItems.push(item); // Add new item to existing list
+    saveToDoItems(allItems);
+    // for (let i = 0; i < allItems.length; i++) {
+    //     //alert(allItems[i].title);
+    // }
 }
 /**
  * Move selected task to completed section of the web page
@@ -38,6 +56,8 @@ function markAsComplete() {
     var currItem = this;
     var completedItems = document.getElementById("completed");
     completedItems.appendChild(currItem);
+    // Toggle the line through on the li
+    currItem.classList.toggle("toggle");
 }
 /**
  * Displays ToDoItem on the page
@@ -62,4 +82,18 @@ function getItem() {
     item.deadline = new Date(deadline);
     item.isCompleted = false;
     return item;
+}
+var theStorageKey = "MyItems";
+function saveToDoItems(items) {
+    var stringData = JSON.stringify(items);
+    localStorage.setItem(theStorageKey, stringData);
+}
+function readToDoItems() {
+    var stringData = localStorage.getItem("MyItems");
+    if (stringData == null) {
+        return new Array();
+    }
+    return JSON.parse(stringData);
+    // let itemArr: ToDoItem[] = JSON.parse(stringData);
+    // return itemArr;
 }

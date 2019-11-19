@@ -1,5 +1,5 @@
 /**
- * Represents a sinle task on a todo list
+ * Represents a single task on a todo list
  */
 class ToDoItem {
     title: string;
@@ -28,6 +28,22 @@ console.log(strData);
 // Setting a cookie called 'todoitems' that expires in a week
 Cookies.set("todoitems", strData, { expires: 7 });
 
+// Read ToDoItem
+let cookieItem: ToDoItem = JSON.parse(Cookies.get("todoitems"));
+console.log("read cookie data..");
+console.log(cookieItem.title + " " + cookieItem.deadline);
+
+
+const storageKey = "Task"
+// TODO: Store ToDO item using HTML5 Web Storage
+if (typeof (Storage) !== "undefined") {
+    localStorage.setItem(storageKey, strData);
+    let storageStr = localStorage.getItem(storageKey);
+    let item: ToDoItem = JSON.parse(storageStr);
+    console.log("Reading storage data...");
+    console.log(item.title);
+}
+
 /* END TEST CODE */
 
 
@@ -39,13 +55,16 @@ window.onload = function () {
 function main() {
     // Get ToDoItem from user
     let item: ToDoItem = getItem();
-
-    // Display new ToDoItem on page
     displayToDoItem(item);
 
+    // Get existing Todos, add new one, re-save list
+    let allItems = readToDoItems();
+    allItems.push(item)    // Add new item to existing list
+    saveToDoItems(allItems)
 
-
-    // Save ToDoItem
+    // for (let i = 0; i < allItems.length; i++) {
+    //     //alert(allItems[i].title);
+    // }
 }
 
 /**
@@ -57,6 +76,9 @@ function markAsComplete() {
     let completedItems = document.getElementById("completed");
 
     completedItems.appendChild(currItem);
+
+    // Toggle the line through on the li
+    currItem.classList.toggle("toggle");
 }
 
 /**
@@ -87,3 +109,22 @@ function getItem() {
 
     return item;
 }
+
+const theStorageKey = "MyItems";
+
+function saveToDoItems(items: Array<ToDoItem>) {
+    let stringData = JSON.stringify(items);
+    localStorage.setItem(theStorageKey, stringData);
+}
+
+function readToDoItems(): Array<ToDoItem> {
+    let stringData = localStorage.getItem("MyItems");
+
+    if (stringData == null) {
+        return new Array<ToDoItem>();
+    }
+
+    return <ToDoItem[]>JSON.parse(stringData);
+    // let itemArr: ToDoItem[] = JSON.parse(stringData);
+    // return itemArr;
+} 

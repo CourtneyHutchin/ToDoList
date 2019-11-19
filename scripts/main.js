@@ -97,3 +97,12 @@ function readToDoItems() {
     // let itemArr: ToDoItem[] = JSON.parse(stringData);
     // return itemArr;
 }
+function blue() {
+    document.body.style.backgroundImage = "linear-gradient(90deg, #00d2ff, #3a7bd5)";
+}
+function purple() {
+    document.body.style.backgroundImage = "linear-gradient(90deg, #4776e6, #8e54e9)";
+}
+function pink() {
+    document.body.style.backgroundImage = "linear-gradient(90deg, #ffafbd, #ffc3a0)";
+}

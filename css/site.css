@@ -5,6 +5,7 @@ body {
     
     
     background-image: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    
     /*
     Other option (purple)
     https://uigradients.com/#ElectricViolet
@@ -13,9 +14,6 @@ body {
     pink
     https://uigradients.com/#Roseanna
     background-image: linear-gradient(90deg, #ffafbd, #ffc3a0);
-
-    maybe a fourth option?
-    https://uigradients.com/#SublimeLight
     */
 }
 
